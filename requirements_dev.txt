@@ -1,0 +1,13 @@
+black
+flake8
+hypofuzz
+hypofuzz[pytrace]
+hypothesis
+isort
+mypy
+pycrunch-trace
+pytest
+pytest-cov
+pytest-html
+pytest-sugar
+pytest-zephyr @ git+https://github.com/cVladu/pytest-zephyr
