@@ -6,10 +6,11 @@ on:
 jobs:
   backport-tests:
     name: Backport all tests to active releases
+    permissions: write-all
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        active-releases: [ 'release/0.2']
+        active-releases: [ 'release/0.2' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,12 +19,12 @@ jobs:
         id: backport-release
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: 'testing'
+          source: 'test'
           target: '${{ matrix.active-releases }}'
       - name: Merge testing into active master branch
         uses: mtanzi/action-automerge@v1
         id: backport-master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: 'testing'
+          source: 'test'
           target: 'master'
