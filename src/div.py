@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def do_div(a: float, b: float) -> float:
     return a / b
 
