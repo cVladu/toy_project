@@ -6,6 +6,7 @@ on:
 jobs:
   backport-tests:
     name: Backport all tests to active releases
+    permissions: write-all
     runs-on: ubuntu-latest
     strategy:
       matrix:
