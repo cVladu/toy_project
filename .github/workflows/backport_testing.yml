@@ -18,12 +18,12 @@ jobs:
         id: backport-release
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: 'testing'
+          source: 'test'
           target: '${{ matrix.active-releases }}'
       - name: Merge testing into active master branch
         uses: mtanzi/action-automerge@v1
         id: backport-master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: 'testing'
+          source: 'test'
           target: 'master'
