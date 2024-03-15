@@ -2,14 +2,14 @@ name: backport-testing
 on:
   push:
     branches:
-      - testing
+      - test
 jobs:
   backport-tests:
     name: Backport all tests to active releases
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        active-releases: [ 'release/0.2', 'release/0.3' ]
+        active-releases: [ 'release/0.2']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
