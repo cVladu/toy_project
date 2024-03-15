@@ -2,7 +2,7 @@ name: backport-testing
 on:
   push:
     branches:
-      - testing
+      - test
 jobs:
   backport-tests:
     name: Backport all tests to active releases
