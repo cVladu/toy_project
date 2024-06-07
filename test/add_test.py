@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pytest
+import numpy
 
 import src.sum as sum
 
