@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import numpy as np
+
 def do_div(a: float, b: float) -> float:
     return a / b
 
