@@ -1,4 +1,4 @@
-black
+# black
 flake8
 hypofuzz
 hypofuzz[pytrace]
