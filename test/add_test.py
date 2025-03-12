@@ -3,6 +3,7 @@ import pytest
 import numpy as np
 import src.sum as sum
 
+# Just a comment
 
 @pytest.mark.zephyr_testcase(
     objective="To verify basic add functionality",
