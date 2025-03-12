@@ -3,6 +3,11 @@ import pytest
 import numpy as np
 import src.sum as sum
 
+<<<<<<< HEAD
+=======
+#WHATEVER
+# Just a comment
+>>>>>>> 4dd8df4 (This is a very very very long commit)
 
 @pytest.mark.zephyr_testcase(
     objective="To verify basic add functionality",
