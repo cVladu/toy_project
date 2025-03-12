@@ -1,6 +1,7 @@
 {
   "repoName": "toy_project",
   "repoOwner": "cvladu",
+  "targetBranchChoices": ["master"],
   "commitConflicts": true,
   "multipleCommits": true,
   "prTitle": "[{{targetBranch}}] {{sourcePullRequest.title}}",
