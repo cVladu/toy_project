@@ -1,5 +1,4 @@
 {
-  "commitConflicts": true,
   "multipleCommits": true,
   "prTitle": "[{{targetBranch}}] {{sourcePullRequest.title}}",
   "prDescription": "[Automated backport]\nOriginal PR: #{{sourcePullRequest.number}}\n\n{{#each commits}}\n{{shortSha this.sourceCommit.sha}}\n{{this.sourceCommit.message}}\n{{/each}}",
