@@ -5,9 +5,7 @@
   "commitConflicts": true,
   "multipleCommits": true,
   "prTitle": "[{{targetBranch}}] {{sourcePullRequest.title}}",
-  "prDescription": "[Automated backport]
-  Original PR: #{{sourcePullRequest.number}}
-  {{sourcePullRequest.mergeCommit.message}}",
+  "prDescription": "[Automated backport]",
   "sourcePRLabels": ["source-picked-to"],
   "targetPRLabels": ["target-picked-to"],
   "backportBranchName": "pickto/{{targetBranch}}-{{sourcePullRequest}}",
