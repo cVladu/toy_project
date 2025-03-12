@@ -1,30 +1,26 @@
-name: backport-testing
+name: Automatic backport action
+
 on:
-  push:
-    branches:
-      - test
+  pull_request_target:
+    types: ["labeled", "closed"]
+
 jobs:
-  backport-tests:
-    name: Backport all tests to active releases
-    permissions: write-all
+  backport:
+    name: Backport PR
+    if: github.event.pull_request.merged == true && !(contains(github.event.pull_request.labels.*.name, 'backport'))
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        active-releases: [ 'release/0.2', 'release/0.3' ]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Merge testing into active release branches
-        uses: mtanzi/action-automerge@v1
-        id: backport-release
+      - name: Backport Action
+        uses: sorenlouv/backport-github-action@v9.5.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: 'test'
-          target: '${{ matrix.active-releases }}'
-      - name: Merge testing into active master branch
-        uses: mtanzi/action-automerge@v1
-        id: backport-master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: 'test'
-          target: 'master'
+          auto_backport_label_prefix: backport-to-
+
+      - name: Info log
+        if: ${{ success() }}
+        run: cat ~/.backport/backport.info.log
+        
+      - name: Debug log
+        if: ${{ failure() }}
+        run: cat ~/.backport/backport.debug.log        
+          
