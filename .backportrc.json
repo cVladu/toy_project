@@ -5,5 +5,5 @@
   "prDescription": "[Automated backport]\nOriginal PR: #{{sourcePullRequest.number}}\n\n{{sourcePullRequest.mergeCommit.message}}",
   "sourcePRLabels": ["source-picked-to"],
   "targetPRLabels": ["target-picked-to"],
-  "backportBranchName": "pickto/{{targetBranch}}-{{sourcePullRequest}}"
+  "backportBranchName": "pickto/{{targetBranch}}-{{sourcePullRequest.number}}"
 }
