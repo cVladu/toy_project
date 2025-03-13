@@ -1,0 +1,17 @@
+name: Comment on PR
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: A simple example with a link to a file
+    steps:
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            Hello world ! 
+            Look at file [file](https://github.com/cVladu/toy_project/blob/master/.backportrc.json)
+            :rocket:
