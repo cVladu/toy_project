@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     name: A simple example with a link to a file
     steps:
+      - name: Checkout announcement file
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: ".github/announcements.txt"
+          sparse-checkout-cone-mode: false
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v3
         with:
+          file-path: .github/announcements.txt
           message: |
-            Hello world ! 
-            Look at file [file](https://github.com/cVladu/toy_project/blob/master/.backportrc.json)
-            :rocket:
