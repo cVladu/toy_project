@@ -1,20 +1,28 @@
-name: Comment on PR
+name: CI Newsletter
 on:
+  push:
   pull_request:
-    types: [opened]
+    types: [opened, reopened]
+  issue_comment:
+    types: [created]
 
 jobs:
-  example_comment_pr:
+  ci_newsletter:
     runs-on: ubuntu-latest
-    name: A simple example with a link to a file
+    name: CI Newsletter
+    if: |
+      ${{ github.event_name }} == 'pull_request' ||
+      (
+        ${{ github.event_name }} == 'issue_comment' &&
+        ${{ github.event.issue.pull_request }} &&
+        ${{ github.event.comment.body }} == 'CI Newsletter'
+      )
     steps:
-      - name: Checkout announcement file
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: ".github/announcements.txt"
-          sparse-checkout-cone-mode: false
-      - name: Comment PR
+      - name: Comment Pull Request CI Newsletter
         uses: thollander/actions-comment-pull-request@v3
         with:
-          file-path: .github/announcements.txt
-          message: |
+          message: "Hello world ${{ github.event_name }}"
+          reactions: rocket
+          comment-tag: ci_newsletter
+          mode: recreate
+
