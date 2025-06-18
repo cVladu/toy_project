@@ -10,16 +10,9 @@ jobs:
     outputs: 
       latest-branch: ${{steps.get_latest_branch.outputs.BRANCH }}
     steps:
-      - name: git fetch
-        uses: actions/checkout@v4.1.1
-        with:
-          fetch-depth: 0
       - name: git get latest release branch
         run: |
-          git branch --list
-          git branch --list release/*
-          git branch --list release/* | sort -V
-          git branch --list release/* | sort -V | tail -1
+          git ls-remote origin "refs/heads/release/*" | sed 's|refs/heads/||'
           BRANCH=$(git branch --list release/* | sort -V | tail -1)
           echo "Branch is ${BRANCH}"
           echo "BRANCH=${BRANCH}" >> $GITHUB_OUTPUT
