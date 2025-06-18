@@ -23,6 +23,6 @@ jobs:
     name: Print the latest release branch as a summary
     steps:
       - name: Summary
-        run: 
+        run: | 
           echo "Latest release branch is: ${{ needs.get-latest-release-branch.outputs.latest-branch }} " >> $GITHUB_STEP_SUMMARY
 
