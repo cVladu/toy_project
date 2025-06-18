@@ -11,6 +11,7 @@ jobs:
       latest-branch: ${{steps.get_latest_branch.outputs.BRANCH }}
     steps:
       - name: git get latest release branch
+        id: get_latest_branch
         run: |
           BRANCH=$(git ls-remote "https://github.com/${{ github.repository }}" "refs/heads/release/*" | awk '{ print $2 }' | sed 's|refs/heads/||' | sort -V | tail -1)
           echo "Branch is ${BRANCH}"
