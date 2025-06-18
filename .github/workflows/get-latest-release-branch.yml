@@ -1,0 +1,28 @@
+---
+name: Get Latest Release
+on: 
+  workflow_dispatch:
+
+jobs:
+  get-latest-release-branch:
+    runs-on: ubuntu-latest
+    name: Get Latest Release Branch
+    outputs: 
+      latest-branch: ${{steps.get_latest_branch.outputs.BRANCH }}
+    steps:
+      - name: git fetch
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch_depth: 0
+      - name: git get latest release branch
+        run: |
+          echo "BRANCH=$(git branch --list release/* | sort -V | tail -1)" >> $GITHUB_OUTPUT
+  print-latest-release-branch:
+    runs-on: ubuntu-latest
+    needs: get-latest-release-branch
+    name: Print the latest release branch as a summary
+    steps:
+      - name: Summary
+        run: 
+          echo "Latest release branch is: ${{ needs.get-latest-release-branch.outputs.latest-branch }} " >> $GITHUB_STEP_SUMMARY
+
