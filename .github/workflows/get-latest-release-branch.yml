@@ -13,7 +13,7 @@ jobs:
       - name: git fetch
         uses: actions/checkout@v4.1.1
         with:
-          fetch_depth: 0
+          fetch-depth: 0
       - name: git get latest release branch
         run: |
           echo "BRANCH=$(git branch --list release/* | sort -V | tail -1)" >> $GITHUB_OUTPUT
