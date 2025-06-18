@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: git get latest release branch
         run: |
-          git ls-remote origin "refs/heads/release/*" | sed 's|refs/heads/||'
+          git ls-remote "https://github.com/${{ github.repository }}" "refs/heads/release/*" | sed 's|refs/heads/||'
           BRANCH=$(git branch --list release/* | sort -V | tail -1)
           echo "Branch is ${BRANCH}"
           echo "BRANCH=${BRANCH}" >> $GITHUB_OUTPUT
