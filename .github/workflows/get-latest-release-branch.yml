@@ -16,7 +16,9 @@ jobs:
           fetch-depth: 0
       - name: git get latest release branch
         run: |
-          echo "BRANCH=$(git branch --list release/* | sort -V | tail -1)" >> $GITHUB_OUTPUT
+          BRANCH=$(git branch --list release/* | sort -V | tail -1)
+          echo "Branch is ${BRANCH}"
+          echo "BRANCH=${BRANCH}" >> $GITHUB_OUTPUT
   print-latest-release-branch:
     runs-on: ubuntu-latest
     needs: get-latest-release-branch
